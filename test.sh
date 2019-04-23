@@ -5,5 +5,5 @@ sep='//LEETCODE_MVP_ANSWER'
 echo "${in//$sep/$in2}" > src/tests/${TESTKEYCAMEL}Test.java
 
 # build and run
-mvn package >> /dev/null
+mvn package dependency:copy-dependencies >> /dev/null
 java -cp .:target/*:target/dependency/* tests.${TESTKEYCAMEL}Test
