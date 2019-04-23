@@ -12,12 +12,16 @@ import utils.ListNode;
 
 public class AddTwoNumbersTest {
 	public static void main(String[] args) throws IOException {
+		
+	}
+	
+	public AddTwoNumbersTest() throws IOException {
 		ArrayList<JSONObject> jsonarray = LeetUtil.loadData("add-two-numbers");
 		jsonarray.forEach(it -> assertOne(it));
 		System.out.println("all pass!");
 	}
 
-	public static void assertOne(JSONObject obj) {
+	public void assertOne(JSONObject obj) {
 		JSONArray params = obj.getJSONArray("params");
 		JSONArray result = obj.getJSONArray("result");
 
@@ -29,8 +33,8 @@ public class AddTwoNumbersTest {
 				sln.addTwoNumbers(LeetUtil.array2linkedNode(param0), LeetUtil.array2linkedNode(param1)));
 
 		int[] expectedRtn = LeetUtil.Json2intArray(result);
-		
-		if(!Arrays.equals(slnRtn,expectedRtn)) {
+
+		if (!Arrays.equals(slnRtn, expectedRtn)) {
 			String input = LeetUtil.toJson(param0) + "," + LeetUtil.toJson(param1);
 			String output = LeetUtil.toJson(slnRtn);
 			String expected = LeetUtil.toJson(expectedRtn);
@@ -39,6 +43,8 @@ public class AddTwoNumbersTest {
 		}
 
 	}
+
 	//LEETCODE_MVP_ANSWER
+
 }
 

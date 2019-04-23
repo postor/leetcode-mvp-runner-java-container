@@ -4,6 +4,9 @@ ADD . /app
 
 WORKDIR /app
 
-RUN chmod +x test.sh && mvn dependency:go-offline
+RUN chmod +x test.sh \\
+&& mvn dependency:go-offline \\
+&& mvn dependency:copy-dependencies \\
+&& mvn package
 
 CMD ./test.sh
