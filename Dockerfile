@@ -4,11 +4,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn dependency:go-offline \\
-  && mvn install --legacy-local-repository \\
-  && mvn package --legacy-local-repository \\
-  && mvn dependency:copy-dependencies --legacy-local-repository
+RUN mvn dependency:go-offline
 
-RUN chmod +x test.sh 
+RUN mvn package dependency:copy-dependencies --legacy-local-repository
+
+RUN chmod +x test.sh
 
 CMD ./test.sh
