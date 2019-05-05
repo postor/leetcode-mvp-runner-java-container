@@ -6,6 +6,8 @@ WORKDIR /app
 
 RUN chmod +x test.sh \\
   && mvn dependency:go-offline \\
-  && mvn install package dependency:copy-dependencies --legacy-local-repository
+  && mvn install --legacy-local-repository \\
+  && mvn package --legacy-local-repository \\
+  && mvn dependency:copy-dependencies --legacy-local-repository
 
 CMD ./test.sh
