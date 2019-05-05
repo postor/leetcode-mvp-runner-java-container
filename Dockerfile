@@ -6,8 +6,10 @@ COPY . .
 
 RUN mvn dependency:go-offline
 
-RUN mvn package dependency:copy-dependencies --legacy-local-repository
+RUN mvn package --legacy-local-repository
 
-RUN chmod +x test.sh
+RUN mvn dependency:copy-dependencies --legacy-local-repository
+
+RUN chmod +x test.sh && rm target -rf
 
 CMD ./test.sh
